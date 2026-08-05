@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x] # Teste sur plusieurs versions de Node
+        node-version: [18.x, 24.x] # Teste sur plusieurs versions de Node
 
     steps:
     # 1. Récupérer le code du dépôt
