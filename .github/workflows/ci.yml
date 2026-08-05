@@ -33,3 +33,15 @@ jobs:
 
     - name: Run build or check syntax
       run: node -c app.js
+
+    #4  Ajout setup de l'etape DevOps
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+      
+    - name: Buiild Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: false
+        tags: appnode:latest
+      
