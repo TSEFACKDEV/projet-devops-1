@@ -1,0 +1,18 @@
+services:
+  web:
+    build: .
+    container_name: appnode
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+    restart: unless-stopped
+    depends_on:
+      - database
+  
+  database:
+    image: mongo:latest
+    container_name: mongo-db
+    ports:
+      - "27017:27017"
+    restart: unless-stopped
