@@ -1,0 +1,35 @@
+name: Node.js CI
+
+# Déclencheur du pipeline
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest # Le serveur virtuel fourni par GitHub
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x] # Teste sur plusieurs versions de Node
+
+    steps:
+    # 1. Récupérer le code du dépôt
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # 2. Configurer l'environnement Node.js
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    # 3. Installer les dépendances et tester
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run build or check syntax
+      run: node -c server.js
