@@ -3,7 +3,7 @@ services:
     build: .
     container_name: appnode
     ports:
-      - "5000:3000"
+      - "6000:3000"
     environment:
       - PORT=3000
     restart: unless-stopped
