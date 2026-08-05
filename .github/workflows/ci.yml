@@ -32,4 +32,4 @@ jobs:
       run: npm ci
 
     - name: Run build or check syntax
-      run: node -c server.js
+      run: node -c app.js
